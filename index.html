@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RYNXPENSE - Cloud-Powered AI Financial Management</title>
+    <meta name="description" content="Transform your finances with RYNXPENSE - intelligent cloud-based budget management powered by AI. Secure, smart, and accessible from anywhere.">
+    <meta name="keywords" content="cloud budget management, AI expense tracker, intelligent financial planning, personal finance AI, cloud money management">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="RYNXPENSE - Cloud-Powered AI Financial Management">
+    <meta property="og:description" content="Transform your finances with intelligent cloud-based budget management powered by AI.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rynxpense.com">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #3B82F6;
+            --primary-purple: #8B5CF6;
+            --success-green: #22C55E;
+            --secondary-green: #10B981;
+            --warning-red: #EF4444;
+            --secondary-red: #DC2626;
+            --cloud-blue: #0EA5E9;
+            --ai-purple: #A855F7;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-600: #4B5563;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.05) 0%, 
+                rgba(139, 92, 246, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cloud-highlight {
+            background: linear-gradient(135deg, var(--cloud-blue), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-highlight {
+            background: linear-gradient(135deg, var(--ai-purple), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .badge-cloud {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(59, 130, 246, 0.1));
+            color: var(--cloud-blue);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+        }
+
+        .badge-ai {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(139, 92, 246, 0.1));
+            color: var(--ai-purple);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Cloud Visual */
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cloud-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .floating-cloud {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(59, 130, 246, 0.1));
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .cloud-1 {
+            width: 200px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: -2s;
+        }
+
+        .cloud-2 {
+            width: 150px;
+            height: 60px;
+            top: 50%;
+            right: 5%;
+            animation-delay: -4s;
+        }
+
+        .cloud-3 {
+            width: 180px;
+            height: 70px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: -1s;
+        }
+
+        .ai-brain {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--ai-purple), var(--primary-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-100);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.02) 0%, 
+                rgba(139, 92, 246, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-icon.cloud {
+            background: linear-gradient(135deg, var(--cloud-blue), var(--primary-blue));
+        }
+
+        .feature-icon.ai {
+            background: linear-gradient(135deg, var(--ai-purple), var(--primary-purple));
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cloud Benefits Section */
+        .cloud-benefits {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--gray-50), rgba(59, 130, 246, 0.03));
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--cloud-blue), var(--primary-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h4 {
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-content p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* AI Features Section */
+        .ai-features {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(139, 92, 246, 0.05));
+        }
+
+        .ai-demo {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+        }
+
+        .ai-conversation {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background: var(--gray-100);
+            align-self: flex-end;
+        }
+
+        .ai-message {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(139, 92, 246, 0.1));
+            align-self: flex-start;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-section .btn-primary {
+            background: white;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            padding: 1.25rem 2.5rem;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--gray-100);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-brand p {
+            color: #9CA3AF;
+            line-height: 1.7;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #9CA3AF;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cloud-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-badges {
+                justify-content: center;
+            }
+            
+            .app-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .app-badge {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo-container">
+                <div class="logo-icon">R</div>
+                <div class="logo">RYNXPENSE</div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#cloud" class="nav-link">Cloud Benefits</a></li>
+                <li><a href="#ai" class="nav-link">AI Intelligence</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="https://app.rynxpense.com" class="cta-button">Launch App</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    Smart <span class="cloud-highlight">Cloud-Based</span><br>
+                    Financial Management<br>
+                    Powered by <span class="ai-highlight">AI</span>
+                </h1>
+                <p>
+                    Experience the future of personal finance with RYNXPENSE. Our intelligent cloud platform uses advanced AI to analyze your spending, predict trends, and optimize your financial health—accessible from anywhere, anytime.
+                </p>
+                
+                <div class="hero-badges">
+                    <div class="badge badge-cloud">
+                        <i data-lucide="cloud" style="width: 16px; height: 16px;"></i>
+                        100% Cloud-Native
+                    </div>
+                    <div class="badge badge-ai">
+                        <i data-lucide="brain" style="width: 16px; height: 16px;"></i>
+                        AI-Powered Insights
+                    </div>
+                </div>
+
+                <div class="hero-buttons">
+                    <a href="https://app.rynxpense.com" class="btn-primary">
+                        <i data-lucide="rocket" style="width: 20px; height: 20px;"></i>
+                        Get Started Now
+                    </a>
+                    <a href="#ai" class="btn-secondary">
+                        <i data-lucide="play" style="width: 20px; height: 20px;"></i>
+                        See AI Demo
+                    </a>
+                </div>
+
+                <div class="app-download">
+                    <p>Also available on mobile</p>
+                    <div class="app-buttons">
+                        <a href="#" class="app-store-btn">
+                            <div class="app-badge">
+                                <div class="app-icon">
+                                    <i data-lucide="smartphone" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div class="app-text">
+                                    <div class="app-text-small">Download on the</div>
+                                    <div class="app-text-large">App Store</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="app-store-btn">
+                            <div class="app-badge">
+                                <div class="app-icon">
+                                    <i data-lucide="play" style="width: 20px; height: 20px;"></i>
+                                </div>
+                                <div class="app-text">
+                                    <div class="app-text-small">Get it on</div>
+                                    <div class="app-text-large">Google Play</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="cloud-container">
+                    <div class="floating-cloud cloud-1"></div>
+                    <div class="floating-cloud cloud-2"></div>
+                    <div class="floating-cloud cloud-3"></div>
+                    <div class="ai-brain">
+                        <i data-lucide="brain" style="width: 60px; height: 60px; color: white;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Revolutionary Financial Intelligence</h2>
+                <p>Discover how cloud computing and artificial intelligence transform the way you manage money</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon cloud">
+                        <i data-lucide="cloud-lightning" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>Lightning-Fast Cloud Sync</h3>
+                    <p>Your financial data syncs instantly across all devices. Access your budgets, track expenses, and monitor goals from anywhere with real-time cloud synchronization.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon ai">
+                        <i data-lucide="brain" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>AI Budget Assistant</h3>
+                    <p>Our intelligent AI analyzes your spending patterns, predicts future expenses, and suggests personalized budget optimizations to maximize your savings.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="trending-up" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>Predictive Analytics</h3>
+                    <p>Advanced machine learning algorithms forecast your financial trends, helping you make informed decisions about upcoming expenses and savings opportunities.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon cloud">
+                        <i data-lucide="smartphone" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>Native Mobile Apps</h3>
+                    <p>Download our native iOS and Android apps for the ultimate mobile experience. Full cloud sync ensures your data is always up-to-date across all platforms.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon ai">
+                        <i data-lucide="message-circle" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>Smart Notifications</h3>
+                    <p>AI-powered alerts notify you about unusual spending, upcoming bills, and savings opportunities at the perfect moment to take action.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i data-lucide="shield-check" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>Enterprise Security</h3>
+                    <p>Bank-level encryption and cloud security protocols ensure your financial data is protected with the highest industry standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cloud Benefits Section -->
+    <section class="cloud-benefits" id="cloud">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Why <span class="cloud-highlight">Cloud-Based</span> Matters</h2>
+                <p>Experience the power of modern cloud infrastructure designed for your financial success</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i data-lucide="hard-drive" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Automatic Backups</h4>
+                        <p>Your data is continuously backed up across multiple secure cloud locations</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i data-lucide="refresh-cw" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Real-Time Sync</h4>
+                        <p>Changes sync instantly across all your devices without any manual intervention</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i data-lucide="trending-up" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Scalable Infrastructure</h4>
+                        <p>Cloud resources automatically scale to handle your growing financial data</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i data-lucide="download-cloud" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Zero Installation</h4>
+                        <p>Start using immediately - no downloads, installations, or updates required</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i data-lucide="zap" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Instant Performance</h4>
+                        <p>Cloud infrastructure delivers lightning-fast loading and processing speeds</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i data-lucide="globe" style="width: 24px; height: 24px; color: white;"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h4>Global Accessibility</h4>
+                        <p>Access your finances from anywhere in the world with 99.9% uptime</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Features Section -->
+    <section class="ai-features" id="ai">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Meet Your <span class="ai-highlight">AI Financial Assistant</span></h2>
+                <p>Experience personalized financial guidance powered by advanced artificial intelligence</p>
+            </div>
+
+            <div class="ai-demo">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--gray-900);">
+                    <i data-lucide="message-square" style="width: 24px; height: 24px; margin-right: 8px; color: var(--ai-purple);"></i>
+                    Live AI Conversation Example
+                </h3>
+                
+                <div class="ai-conversation">
+                    <div class="message user-message">
+                        <strong>You:</strong> "I want to save $5,000 for vacation next year. Can you help me create a budget?"
+                    </div>
+                    
+                    <div class="message ai-message">
+                        <strong>🤖 RYNXPENSE AI:</strong> "I'd be happy to help! Based on your spending history, I can see you earn $4,200/month. To save $5,000 in 12 months, you'll need to save $417/month. I've analyzed your expenses and found 3 areas where you can optimize: dining out ($180/month → $120), subscriptions ($95/month → $65), and entertainment ($150/month → $100). This gives you $440/month in savings - enough for your vacation plus a small buffer!"
+                    </div>
+                    
+                    <div class="message user-message">
+                        <strong>You:</strong> "That sounds great! Can you set this up automatically?"
+                    </div>
+                    
+                    <div class="message ai-message">
+                        <strong>🤖 RYNXPENSE AI:</strong> "Absolutely! I've created your 'Dream Vacation 2026' budget with smart categories and automatic savings transfers. I'll also send you weekly progress updates and gentle reminders when you're approaching spending limits. Plus, I've scheduled monthly check-ins to adjust the plan if your income or expenses change. You're all set to reach your goal! 🏖️"
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid" style="margin-top: 3rem;">
+                <div class="feature-card">
+                    <div class="feature-icon ai">
+                        <i data-lucide="lightbulb" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>Smart Recommendations</h3>
+                    <p>AI analyzes your financial patterns to suggest personalized money-saving opportunities and investment strategies tailored to your lifestyle.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon ai">
+                        <i data-lucide="target" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>Goal Optimization</h3>
+                    <p>Machine learning algorithms automatically adjust your budget allocation to help you reach financial goals faster while maintaining your quality of life.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon ai">
+                        <i data-lucide="eye" style="width: 40px; height: 40px; color: white;"></i>
+                    </div>
+                    <h3>Anomaly Detection</h3>
+                    <p>Advanced AI monitors your spending for unusual patterns, potential fraud, and subscription renewals you might have forgotten about.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="features" style="background: var(--gray-50);">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Trusted by Thousands</h2>
+                <p>Join the growing community of smart savers who've transformed their finances with RYNXPENSE</p>
+            </div>
+
+            <div class="stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-top: 3rem;">
+                <div class="stat" style="text-align: center;">
+                    <div class="stat-number" style="font-size: 3rem; font-weight: bold; color: var(--primary-blue); margin-bottom: 0.5rem;">50K+</div>
+                    <div class="stat-label" style="color: var(--gray-600);">Active Users</div>
+                </div>
+                <div class="stat" style="text-align: center;">
+                    <div class="stat-number" style="font-size: 3rem; font-weight: bold; color: var(--cloud-blue); margin-bottom: 0.5rem;">$2.3M</div>
+                    <div class="stat-label" style="color: var(--gray-600);">Money Saved by AI</div>
+                </div>
+                <div class="stat" style="text-align: center;">
+                    <div class="stat-number" style="font-size: 3rem; font-weight: bold; color: var(--ai-purple); margin-bottom: 0.5rem;">1M+</div>
+                    <div class="stat-label" style="color: var(--gray-600);">AI Recommendations</div>
+                </div>
+                <div class="stat" style="text-align: center;">
+                    <div class="stat-number" style="font-size: 3rem; font-weight: bold; color: var(--success-green); margin-bottom: 0.5rem;">99.9%</div>
+                    <div class="stat-label" style="color: var(--gray-600);">Cloud Uptime</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <i data-lucide="star" style="width: 20px; height: 20px; color: #FCD34D; fill: currentColor;"></i>
+                        <i data-lucide="star" style="width: 20px; height: 20px; color: #FCD34D; fill: currentColor;"></i>
+                        <i data-lucide="star" style="width: 20px; height: 20px; color: #FCD34D; fill: currentColor;"></i>
+                        <i data-lucide="star" style="width: 20px; height: 20px; color: #FCD34D; fill: currentColor;"></i>
+                        <i data-lucide="star" style="width: 20px; height: 20px; color: #FCD34D; fill: currentColor;"></i>
+                        <span style="margin-left: 8px; font-weight: 600;">4.9/5 from 2,847 reviews</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="about">
+        <div class="cta-container">
+            <h2>Ready to Transform Your Financial Future?</h2>
+            <p>Join thousands of users who have taken control of their finances with RYNXPENSE's premium cloud-powered AI platform.</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0;">
+                <div class="badge" style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.3);">
+                    <i data-lucide="zap" style="width: 16px; height: 16px;"></i>
+                    Premium Features
+                </div>
+                <div class="badge" style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.3);">
+                    <i data-lucide="crown" style="width: 16px; height: 16px;"></i>
+                    From ₱69/month
+                </div>
+                <div class="badge" style="background: rgba(255, 255, 255, 0.2); color: white; border: 1px solid rgba(255, 255, 255, 0.3);">
+                    <i data-lucide="shield" style="width: 16px; height: 16px;"></i>
+                    Cancel Anytime
+                </div>
+            </div>
+            
+            <a href="https://app.rynxpense.com" class="btn-primary">
+                Unlock Premium Features Today
+                <i data-lucide="arrow-right" style="width: 20px; height: 20px;"></i>
+            </a>
+            
+            <div class="app-download" style="margin-top: 2rem;">
+                <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 1rem;">Or download our mobile apps</p>
+                <div class="app-buttons">
+                    <a href="#" class="app-store-btn">
+                        <div class="app-badge" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <div class="app-icon">
+                                <i data-lucide="smartphone" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <div class="app-text">
+                                <div class="app-text-small">Download on the</div>
+                                <div class="app-text-large">App Store</div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="app-store-btn">
+                        <div class="app-badge" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <div class="app-icon">
+                                <i data-lucide="play" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <div class="app-text">
+                                <div class="app-text-small">Get it on</div>
+                                <div class="app-text-large">Google Play</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>RYNXPENSE</h3>
+                    <p>Empowering individuals and families to take control of their financial future through intelligent cloud-based budget management and AI-powered insights. Your money, optimized by intelligence.</p>
+                    <div style="margin-top: 1rem;">
+                        <div class="badge" style="background: rgba(59, 130, 246, 0.1); color: var(--primary-blue); border: 1px solid rgba(59, 130, 246, 0.2); margin-right: 8px;">
+                            <i data-lucide="cloud" style="width: 14px; height: 14px;"></i>
+                            Cloud-Native
+                        </div>
+                        <div class="badge" style="background: rgba(168, 85, 247, 0.1); color: var(--ai-purple); border: 1px solid rgba(168, 85, 247, 0.2);">
+                            <i data-lucide="brain" style="width: 14px; height: 14px;"></i>
+                            AI-Powered
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#features">Cloud Features</a></li>
+                        <li><a href="#ai">AI Assistant</a></li>
+                        <li><a href="https://app.rynxpense.com">Web App</a></li>
+                        <li><a href="https://api.rynxpense.com">API Docs</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#press">Press Kit</a></li>
+                        <li><a href="#security">Security</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#status">System Status</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 RYNXPENSE. All rights reserved. | Powered by Advanced Cloud Infrastructure & Artificial Intelligence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Add entrance animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .benefit-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
